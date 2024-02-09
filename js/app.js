@@ -1,23 +1,11 @@
-var CTPS = {};
-CTPS.demoApp = {};
-
-CTPS.demoApp.init = function() {
-	$('#showhide').click(function(e) {
-		if (this.value === 'Show description') {
-			$('#blurb').show();
-			this.value = 'Hide description';
-		} else {
-			$('#blurb').hide();
-			this.value = 'Show description';		
-		}
-	});
+function initialize() {
 	d3.json("JSON/boston_region_mpo_towns.topo.json", 
 			function(error, data) { 
-				CTPS.demoApp.generateViz(data); 
+				generateViz(data); 
 			});
-} // CTPS.demoApp.init() 
+} 
 
-CTPS.demoApp.generateViz = function(topoJsonData) {	
+function generateViz(topoJsonData) {	
 	var width = 550, 
 		height = 500;
 		
@@ -87,4 +75,4 @@ CTPS.demoApp.generateViz = function(topoJsonData) {
 		.append("title")
 			.text(function(d, i) { return "Map #2: " + d.properties.TOWN });		
 			
-} // CTPS.demoApp.generateViz()
+}
